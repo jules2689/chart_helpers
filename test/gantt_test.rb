@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module GanttTest < Minitest::Test
+class GanttTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::Gantt::VERSION
   end
