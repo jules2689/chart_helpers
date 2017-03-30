@@ -3,12 +3,13 @@ require 'victor'
 module Charts
   class GanttChart
     DEFAULT = {
-      font_size:   12,
-      font_family: 'arial',
-      font_weight: 'regular',
-      font_color:  '#000',
-      row_color:   '#9370DB',
-      row_height:  20
+      font_size:         12,
+      font_family:       'arial',
+      font_weight:       'regular',
+      title_font_weight: 'bold',
+      font_color:        '#000',
+      row_color:         '#9370DB',
+      row_height:        20
     }.freeze
     TITLE_TOP_PADDING = 20
 

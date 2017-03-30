@@ -11,7 +11,7 @@
 ]]>
 </style>
 
-<text x="50%" y="20" font-family="arial" font-weight="regular" font-size="12" fill="#000" style="text-anchor: middle;">
+<text x="50%" y="20" font-family="arial" font-weight="bold" font-size="12" fill="#000" style="text-anchor: middle;">
 file: /gems/bundler-1.14.6/lib/bundler/definition.rb method: converge_dependencies
 </text>
 <g class="grid" transform="translate(0, 100)">
