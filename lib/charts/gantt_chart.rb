@@ -9,22 +9,28 @@ module Charts
       title_font_weight: 'bold',
       font_color:        '#000',
       row_color:         '#9370DB',
-      row_height:        20
+      row_height:        30
     }.freeze
     TITLE_TOP_PADDING = 20
+    GRID_TOP_PADDING = TITLE_TOP_PADDING + 80
 
     attr_reader :data, :title, :scale
 
-    def initialize(title:, data:, scale:, width: 1000, height: 500, options: {})
+    def initialize(title:, data:, scale:, width: 2000, height: nil, options: {})
       @title = title
       @data = data
       @scale = scale
-      @width = width
-      @height = height
       @options = options
 
       @max_value = @data.collect { |v| v[:end] }.max.to_f
-      @row_height = @options[:row_height] || (height - TITLE_TOP_PADDING) / (@data.size + 2) # plus 2 for title and axis labels
+      @row_height = @options[:row_height] || DEFAULT[:row_height]
+
+      @width = width
+      # Height should be one "row_height"" for each row + one for the axis + title
+      @height = height || @row_height * (data.size + 1) + 100
+
+      # Cache for text sizes to avoid duplicating work
+      @text_sizes = {}
     end
 
     def build(output)
@@ -116,7 +122,7 @@ module Charts
       ticks = (@max_value / @scale).ceil
 
       # Render a containing element. We translate this down so the title fits.
-      svg.g(class: 'grid', transform: "translate(0, #{TITLE_TOP_PADDING + 80})") do
+      svg.g(class: 'grid', transform: "translate(0, #{GRID_TOP_PADDING})") do
         ticks.times do |i|
           x_pos = (100.0 / ticks * i).round(3)
           text = (@scale * i).round(3)
@@ -130,20 +136,25 @@ module Charts
     end
 
     def render_grid_line(svg, x_pos, text = nil)
+      y_pos = @height - @row_height - GRID_TOP_PADDING # Position at the bottom, that is, the height - height of axis (row height) - grid top padding
+      font_size = setting(:tick_font_size, :font_size)
+      _, text_height = size_of_text(font_size, text.to_s)
       svg.g(class: 'tick', style: 'opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px') do
-        svg.line(y2: -50, y1: (@data.size + 1) * @row_height, x1: x_pos, x2: x_pos) # -50 to extend above the graph
-        svg.text(text.to_s, x: x_pos, y: (@data.size + 1) * @row_height + 1, font_size: setting(:tick_font_size, :font_size), style: 'stroke: none; fill: black;') unless text.nil?
+        svg.line(y2: -50, y1: y_pos - text_height, x1: x_pos, x2: x_pos) # -50 to extend above the graph
+        svg.text(text.to_s, x: x_pos, y: y_pos, font_size: font_size, style: 'stroke: none; fill: black;') unless text.nil?
       end
     end
 
     def size_of_text(size, string)
-      # This should work on OS X and Ubuntu
-      result = estimate_size(size, string)
-      width = 0
-      height = 0
-      width = Regexp.last_match(1).to_f if result =~ /width: ([\d\.]+);/
-      height = Regexp.last_match(1).to_f if result =~ /height: ([\d\.]+);/
-      [width, height]
+      @text_sizes["#{string}-#{size}"] ||= begin
+        # This should work on OS X and Ubuntu
+        result = estimate_size(size, string)
+        width = 0
+        height = 0
+        width = Regexp.last_match(1).to_f if result =~ /width: ([\d\.]+);/
+        height = Regexp.last_match(1).to_f if result =~ /height: ([\d\.]+);/
+        [width, height]
+      end
     end
 
     def estimate_size(size, string)
