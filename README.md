@@ -2,6 +2,8 @@
 
 Charts is a gem that can parse markdown-like text and turn it into SVG files.
 
+![Gantt Chart](https://cloud.githubusercontent.com/assets/3074765/24487942/6c404160-14e1-11e7-947c-bfe26ebd2274.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
