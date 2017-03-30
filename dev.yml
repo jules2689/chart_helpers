@@ -1,0 +1,7 @@
+name: charts
+
+up:
+ - ruby: 2.4.0
+ - bundler
+ - homebrew:
+    - imagemagick
