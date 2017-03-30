@@ -147,6 +147,13 @@ module Charts
     end
 
     def estimate_size(size, string)
+      # EXAMPLE OUTPUT FOR `my_string` AT SIZE 12
+      # 2017-03-30T02:03:01-04:00 0:00.030 0.010u 6.9.8 Annotate convert[1787]: annotate.c/RenderFreetype/1468/Annotate
+      #   Font /Library/Fonts/Arial.ttf; font-encoding none; text-encoding none; pointsize 12
+      # 2017-03-30T02:03:01-04:00 0:00.030 0.010u 6.9.8 Annotate convert[1787]: annotate.c/GetTypeMetrics/888/Annotate
+      #   Metrics: text: my_string; width: 52; height: 14; ascent: 11; descent: -3; max advance: 24; bounds: 0.390625,-2  5.875,6; origin: 53,0; pixels per em: 12,12; underline position: -4.5625; underline thickness: 2.34375
+      # 2017-03-30T02:03:01-04:00 0:00.030 0.010u 6.9.8 Annotate convert[1787]: annotate.c/RenderFreetype/1468/Annotate
+      #   Font /Library/Fonts/Arial.ttf; font-encoding none; text-encoding none; pointsize 12
       `convert xc: -pointsize #{size} -debug annotate -annotate 0 '#{string}' null: 2>&1`
     end
   end
