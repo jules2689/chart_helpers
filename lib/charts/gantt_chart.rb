@@ -1,19 +1,18 @@
-#!/usr/bin/env ruby -w
-# encoding: UTF-8
-
 require 'victor'
 
-module Gantt
-  class Chart
+module Charts
+  class GanttChart
     DEFAULT = {
       font_size:   12,
       font_family: 'arial',
       font_weight: 'regular',
       font_color:  '#000',
-      row_color:   '#0086b3',
+      row_color:   '#9370DB',
       row_height:  20
     }.freeze
     TITLE_TOP_PADDING = 20
+
+    attr_reader :data, :title, :scale
 
     def initialize(title:, data:, scale:, width: 1000, height: 500, options: {})
       @title = title
@@ -34,7 +33,7 @@ module Gantt
       svg.g(transform: "translate(0, #{TITLE_TOP_PADDING})") do
         @data.each_with_index { |row, i| render_row(svg, row, i + 1) }
       end
-      svg.save output
+      svg.save(output)
     end
 
     private
@@ -90,17 +89,17 @@ module Gantt
       if row[:title]
         font_size = row[:font_size] || setting(:line_font_size, :font_size)
         text_width, text_height = size_of_text(font_size, row[:title])
-        text_x_pos = x_pos + width + 1
+        text_x_pos = x_pos + width + 10
 
         # If the text will go off the end, then put it in front
-        text_x_pos = x_pos - text_width - 1 if text_x_pos + text_width >= @width
+        text_x_pos = x_pos - text_width - 10 if text_x_pos + text_width >= @width
 
         # If the text will start before the chart, make it overlay the rect
-        text_x_pos = 1 if text_x_pos < 1
+        text_x_pos = 10 if text_x_pos < 10
 
         svg.text(
           row[:title],
-          x: text_x_pos,
+          x: text_x_pos.round(2),
           y: y_pos + (@row_height + text_height) / 2, # Attempt to center on the rect
           font_family: row[:font_family] || setting(:line_font_family, :font_family),
           font_weight: row[:font_weight] || setting(:line_font_weight, :font_weight),
@@ -119,7 +118,7 @@ module Gantt
       svg.g(class: 'grid', transform: "translate(0, #{TITLE_TOP_PADDING + 80})") do
         ticks.times do |i|
           x_pos = (100.0 / ticks * i).round(3)
-          text = i == 0 ? nil : (@scale * i).round(3)
+          text = (@scale * i).round(3)
           render_grid_line(svg, "#{x_pos}%", text)
         end
         # Render one more grid line at the end
@@ -138,12 +137,16 @@ module Gantt
 
     def size_of_text(size, string)
       # This should work on OS X and Ubuntu
-      result = `convert xc: -pointsize #{size} -debug annotate -annotate 0 '#{string}' null: 2>&1`
+      result = estimate_size(size, string)
       width = 0
       height = 0
       width = Regexp.last_match(1).to_f if result =~ /width: ([\d\.]+);/
       height = Regexp.last_match(1).to_f if result =~ /height: ([\d\.]+);/
       [width, height]
+    end
+
+    def estimate_size(size, string)
+      `convert xc: -pointsize #{size} -debug annotate -annotate 0 '#{string}' null: 2>&1`
     end
   end
 end

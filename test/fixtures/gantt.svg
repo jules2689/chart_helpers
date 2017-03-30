@@ -1,0 +1,180 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="1000" height="500" 
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<style type="text/css">
+<![CDATA[
+
+]]>
+</style>
+
+<text x="50%" y="20" font-family="arial" font-weight="regular" font-size="12" fill="#000" style="text-anchor: middle;">
+file: /gems/bundler-1.14.6/lib/bundler/definition.rb method: converge_dependencies
+</text>
+<g class="grid" transform="translate(0, 100)">
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="0.0%" x2="0.0%"/>
+<text x="0.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.0
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="5.0%" x2="5.0%"/>
+<text x="5.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.001
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="10.0%" x2="10.0%"/>
+<text x="10.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.003
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="15.0%" x2="15.0%"/>
+<text x="15.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.004
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="20.0%" x2="20.0%"/>
+<text x="20.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.005
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="25.0%" x2="25.0%"/>
+<text x="25.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.007
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="30.0%" x2="30.0%"/>
+<text x="30.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.008
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="35.0%" x2="35.0%"/>
+<text x="35.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.009
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="40.0%" x2="40.0%"/>
+<text x="40.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.011
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="45.0%" x2="45.0%"/>
+<text x="45.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.012
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="50.0%" x2="50.0%"/>
+<text x="50.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.014
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="55.0%" x2="55.0%"/>
+<text x="55.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.015
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="60.0%" x2="60.0%"/>
+<text x="60.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.016
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="65.0%" x2="65.0%"/>
+<text x="65.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.018
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="70.0%" x2="70.0%"/>
+<text x="70.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.019
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="75.0%" x2="75.0%"/>
+<text x="75.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.02
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="80.0%" x2="80.0%"/>
+<text x="80.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.022
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="85.0%" x2="85.0%"/>
+<text x="85.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.023
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="90.0%" x2="90.0%"/>
+<text x="90.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.024
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="95.0%" x2="95.0%"/>
+<text x="95.0%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.026
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="384" x1="100%" x2="100%"/>
+<text x="100%" y="385" font-size="12" style="stroke: none; fill: black;">
+0.027
+</text>
+</g>
+</g>
+<g transform="translate(0, 20)">
+<rect x="0.0" y="49" width="38" height="48" fill="#9370DB"/>
+<text x="48.0" y="80.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;(@dependencies + @locked_deps.values).each do |dep|&quot;
+</text>
+<rect x="37.04" y="98" width="38" height="48" fill="#9370DB"/>
+<text x="85.04" y="129.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;locked_source = @locked_deps[dep.name] (run 474 times)&quot;
+</text>
+<rect x="74.07" y="147" width="112" height="48" fill="#9370DB"/>
+<text x="196.07" y="178.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;if Bundler.settings[:frozen] &amp;&amp; !locked_source.nil? &amp;&amp; (run 474 times)&quot;
+</text>
+<rect x="185.19" y="196" width="38" height="48" fill="#9370DB"/>
+<text x="233.19" y="227.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;elsif dep.source (run 474 times)&quot;
+</text>
+<rect x="222.22" y="245" width="112" height="48" fill="#9370DB"/>
+<text x="344.22" y="276.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;dep.source = sources.get(dep.source) (run 142 times)&quot;
+</text>
+<rect x="333.33" y="294" width="38" height="48" fill="#9370DB"/>
+<text x="381.33" y="325.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;if dep.source.is_a?(Source::Gemspec) (run 474 times)&quot;
+</text>
+<rect x="370.37" y="343" width="593" height="48" fill="#9370DB"/>
+<text x="323.37" y="374.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;dependency_without_type = proc {|d| Gem::Dependency.new(d.name, *d.requirement.as_list) } (run 475 times)&quot;
+</text>
+<rect x="962.96" y="392" width="38" height="48" fill="#9370DB"/>
+<text x="915.96" y="423.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;Set.new(@dependencies.map(&amp;dependency_without_type)) != Set.new(@locked_deps.values.map(&amp;dependency_without_type))&quot;
+</text>
+</g>
+
+</svg>

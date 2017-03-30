@@ -2,16 +2,16 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gantt/version'
+require 'charts/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'gantt'
-  spec.version       = Gantt::VERSION
+  spec.name          = 'charts'
+  spec.version       = Charts::VERSION
   spec.authors       = ['Julian Nadeau']
   spec.email         = ['julian@jnadeau.ca']
 
-  spec.summary       = 'Gantt Charts'
-  spec.description   = 'Gantt Charts'
+  spec.summary       = 'Create SVG and PNG Charts'
+  spec.description   = 'Create SVG and PNG Charts. Includes Gantt Charts'
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

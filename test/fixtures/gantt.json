@@ -1,0 +1,42 @@
+[
+  {
+    "title": "&quot;(@dependencies + @locked_deps.values).each do |dep|&quot;",
+    "start": 0,
+    "end": 0.001
+  },
+  {
+    "title": "&quot;locked_source = @locked_deps[dep.name] (run 474 times)&quot;",
+    "start": 0.001,
+    "end": 0.002
+  },
+  {
+    "title": "&quot;if Bundler.settings[:frozen] &amp;&amp; !locked_source.nil? &amp;&amp; (run 474 times)&quot;",
+    "start": 0.002,
+    "end": 0.005
+  },
+  {
+    "title": "&quot;elsif dep.source (run 474 times)&quot;",
+    "start": 0.005,
+    "end": 0.006
+  },
+  {
+    "title": "&quot;dep.source = sources.get(dep.source) (run 142 times)&quot;",
+    "start": 0.006,
+    "end": 0.009
+  },
+  {
+    "title": "&quot;if dep.source.is_a?(Source::Gemspec) (run 474 times)&quot;",
+    "start": 0.009,
+    "end": 0.01
+  },
+  {
+    "title": "&quot;dependency_without_type = proc {|d| Gem::Dependency.new(d.name, *d.requirement.as_list) } (run 475 times)&quot;",
+    "start": 0.01,
+    "end": 0.026
+  },
+  {
+    "title": "&quot;Set.new(@dependencies.map(&amp;dependency_without_type)) != Set.new(@locked_deps.values.map(&amp;dependency_without_type))&quot;",
+    "start": 0.026,
+    "end": 0.027
+  }
+]
