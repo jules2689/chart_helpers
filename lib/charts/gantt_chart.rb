@@ -131,8 +131,8 @@ module Charts
 
     def render_grid_line(svg, x_pos, text = nil)
       svg.g(class: 'tick', style: 'opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px') do
-        svg.line(y2: -50, y1: @data.size * @row_height, x1: x_pos, x2: x_pos) # -50 to extend above the graph
-        svg.text(text.to_s, x: x_pos, y: @data.size * @row_height + 1, font_size: setting(:tick_font_size, :font_size), style: 'stroke: none; fill: black;') unless text.nil?
+        svg.line(y2: -50, y1: (@data.size + 1) * @row_height, x1: x_pos, x2: x_pos) # -50 to extend above the graph
+        svg.text(text.to_s, x: x_pos, y: (@data.size + 1) * @row_height + 1, font_size: setting(:tick_font_size, :font_size), style: 'stroke: none; fill: black;') unless text.nil?
       end
     end
 
