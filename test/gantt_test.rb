@@ -36,4 +36,24 @@ class ChartsTest < Minitest::Test
       assert_equal fixture('gantt.svg').strip, File.read(file.path + ".svg").strip
     end
   end
+
+  def test_parsing_gantt_chart_when_rows_start_with_title
+    chart = <<-eos
+      gantt
+      title testing
+      dateFormat s.SSS
+
+      title1 :a1, 0.000, 0.001
+      title2 :a1, 0.001, 0.005
+    eos
+
+    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal [{title: "title1", start: 0.0, end: 0.001}, {title: "title2", start: 0.001, end: 0.005}], gantt_chart.data
+    end
+  end
 end
