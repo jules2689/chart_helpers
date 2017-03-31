@@ -1,0 +1,156 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="2000" height="190" 
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<style type="text/css">
+<![CDATA[
+
+]]>
+</style>
+
+<text x="50%" y="20" font-family="arial" font-weight="bold" font-size="12" fill="#000" style="text-anchor: middle;">
+file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
+</text>
+<g class="grid" transform="translate(0, 100)">
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="0.0%" x2="0.0%"/>
+<text x="0.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+0%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="5.0%" x2="5.0%"/>
+<text x="5.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+5%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="10.0%" x2="10.0%"/>
+<text x="10.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+10%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="15.0%" x2="15.0%"/>
+<text x="15.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+15%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="20.0%" x2="20.0%"/>
+<text x="20.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+20%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="25.0%" x2="25.0%"/>
+<text x="25.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+25%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="30.0%" x2="30.0%"/>
+<text x="30.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+30%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="35.0%" x2="35.0%"/>
+<text x="35.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+35%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="40.0%" x2="40.0%"/>
+<text x="40.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+40%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="45.0%" x2="45.0%"/>
+<text x="45.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+45%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="50.0%" x2="50.0%"/>
+<text x="50.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+50%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="55.0%" x2="55.0%"/>
+<text x="55.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+55%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="60.0%" x2="60.0%"/>
+<text x="60.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+60%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="65.0%" x2="65.0%"/>
+<text x="65.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+65%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="70.0%" x2="70.0%"/>
+<text x="70.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+70%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="75.0%" x2="75.0%"/>
+<text x="75.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+75%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="80.0%" x2="80.0%"/>
+<text x="80.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+80%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="85.0%" x2="85.0%"/>
+<text x="85.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+85%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="90.0%" x2="90.0%"/>
+<text x="90.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+90%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="95.0%" x2="95.0%"/>
+<text x="95.0%" y="60" font-size="12" style="stroke: none; fill: black;">
+95%
+</text>
+</g>
+<g class="tick" style="opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px">
+<line y2="-50" y1="46.0" x1="100%" x2="100%"/>
+<text x="100%" y="60" font-size="12" style="stroke: none; fill: black;">
+100%
+</text>
+</g>
+</g>
+<g transform="translate(0, 20)">
+<rect x="0.0" y="31" width="1000" height="30" fill="#9370DB"/>
+<text x="1010.0" y="53.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;@unlocking = unlock == true || !unlock.empty?&quot;
+</text>
+<rect x="1000.0" y="62" width="1000" height="30" fill="#9370DB"/>
+<text x="953.0" y="84.0" font-family="arial" font-weight="regular" font-size="12" fill="#000">
+&quot;@dependencies    = dependencies&quot;
+</text>
+</g>
+
+</svg>

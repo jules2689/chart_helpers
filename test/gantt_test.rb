@@ -11,7 +11,6 @@ class ChartsTest < Minitest::Test
     chart = <<-eos
       gantt
          title file: /gems/bundler-1.14.6/lib/bundler/definition.rb method: converge_dependencies
-         dateFormat  s.SSS
 
          "(@dependencies + @locked_deps.values).each do |dep|" :a1, 0.000, 0.001
          "locked_source = @locked_deps[dep.name] (run 474 times)" :a1, 0.001, 0.002
@@ -41,7 +40,6 @@ class ChartsTest < Minitest::Test
     chart = <<-eos
       gantt
       title testing
-      dateFormat s.SSS
 
       title1 :a1, 0.000, 0.001
       title2 :a1, 0.001, 0.005
@@ -54,6 +52,46 @@ class ChartsTest < Minitest::Test
 
       assert_equal Charts::GanttChart, gantt_chart.class
       assert_equal [{title: "title1", start: 0.0, end: 0.001}, {title: "title2", start: 0.001, end: 0.005}], gantt_chart.data
+    end
+  end
+
+  def test_parsing_with_number_format
+    chart = <<-eos
+      gantt
+      title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
+      numberFormat  %.0f%
+
+      "@unlocking = unlock == true || !unlock.empty?" :a1, 0.000, 50.0
+      "@dependencies    = dependencies" :a1, 50.0, 100.0
+    eos
+
+    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal fixture('gantt_number_format.svg').strip, File.read(file.path + ".svg").strip
+    end
+  end
+
+  def test_parsing_with_date_format
+    chart = <<-eos
+      gantt
+      title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
+      dateFormat  %H:%M:%S
+
+      "@unlocking = unlock == true || !unlock.empty?" :a1, 2007-11-19T08:37, 2007-11-19T08:38Z
+      "@dependencies    = dependencies" :a1, 2007-11-19T08:38, 2007-11-19T08:40Z
+    eos
+
+    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal fixture('gantt_date_format.svg').strip, File.read(file.path + ".svg").strip
     end
   end
 end

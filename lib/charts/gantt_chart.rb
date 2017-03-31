@@ -16,15 +16,25 @@ module Charts
 
     attr_reader :data, :title, :scale
 
-    def initialize(title:, data:, scale:, width: 2000, height: nil, options: {})
+    def initialize(title:, data:, scale:, width: 2000, height: nil, date_format: nil, number_format: nil, options: {})
       @title = title
       @data = data
       @scale = scale
+      @date_format = date_format
+      @number_format = number_format
       @options = options
 
-      @max_value = @data.collect { |v| v[:end] }.max.to_f
-      @row_height = @options[:row_height] || DEFAULT[:row_height]
+      @max_value = @data.collect { |v| v[:end] }.max
+      @max_value = @max_value.to_time if @max_value.is_a?(DateTime)
+      @max_value = @max_value.to_f
 
+      @min_value = @data.collect { |v| v[:start] }.min
+      @min_value = @min_value.to_time if @min_value.is_a?(DateTime)
+      @min_value = @min_value.to_f
+
+      # We aren't guaranteed for our min_value to be 0, so base everything off of the difference
+      @diff_value = @max_value - @min_value
+      @row_height = setting(:row_height)
       @width = width
       # Height should be one "row_height"" for each row + one for the axis + title
       @height = height || @row_height * (data.size + 1) + 100
@@ -75,13 +85,13 @@ module Charts
     def render_row(svg, row, idx)
       # The width of a particular row can be calculated as a percentage of the difference of the start and end
       # over the maximum end value
-      width = ((row[:end] - row[:start]) / @max_value * @width).ceil
+      width = ((row[:end] - row[:start]) / @diff_value * @width).ceil
 
       # The y position will always be row height * index, plus one for the title
       y_pos = idx * (@row_height + 1)
 
       # Express the x position as a width based change
-      x_pos = (row[:start] / @max_value * @width).round(2)
+      x_pos = ((row[:start] - @min_value) / @diff_value * @width).round(2)
 
       # This rectangle represents the entry in the gantt chart
       svg.rect(
@@ -119,7 +129,7 @@ module Charts
     def render_grid(svg)
       # The number of ticks we want corresponds to the number of times we can fit our scale
       # in our max value.
-      ticks = (@max_value / @scale).ceil
+      ticks = (@diff_value / @scale).ceil
 
       # Render a containing element. We translate this down so the title fits.
       svg.g(class: 'grid', transform: "translate(0, #{GRID_TOP_PADDING})") do
@@ -138,10 +148,21 @@ module Charts
     def render_grid_line(svg, x_pos, text = nil)
       y_pos = @height - @row_height - GRID_TOP_PADDING # Position at the bottom, that is, the height - height of axis (row height) - grid top padding
       font_size = setting(:tick_font_size, :font_size)
-      _, text_height = size_of_text(font_size, text.to_s)
+      text_to_render = grid_text(text)
+      _, text_height = size_of_text(font_size, text_to_render.to_s)
       svg.g(class: 'tick', style: 'opacity: 1; stroke: lightgrey; shape-rendering: crispEdges; stroke-width: 1px') do
         svg.line(y2: -50, y1: y_pos - text_height, x1: x_pos, x2: x_pos) # -50 to extend above the graph
-        svg.text(text.to_s, x: x_pos, y: y_pos, font_size: font_size, style: 'stroke: none; fill: black;') unless text.nil?
+        svg.text(text_to_render, x: x_pos, y: y_pos, font_size: font_size, style: 'stroke: none; fill: black;') unless text.nil?
+      end
+    end
+
+    def grid_text(text)
+      text = if @date_format
+        Time.at(@min_value + text).to_datetime.strftime(@date_format)
+      elsif @number_format
+        format(@number_format, text)
+      else
+        text.to_s
       end
     end
 

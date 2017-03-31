@@ -7,13 +7,14 @@ module Charts
       GANTT_LINE_REGEX = %r{
         (?<title>.+)
         (?<group>:\w+)
-        ,\s+(?<start>[\w\.]+)
-        ,\s+(?<end>[\w\.]+)
+        ,\s+(?<start>[[^,]+]+)
+        ,\s+(?<end>[[^,]+]+)
       }x
 
       def self.parse(lines)
         title = 'Gantt Chart'
-        date_format = 's.SSS'
+        date_format = nil
+        number_format = nil
         data = []
 
         while line = lines.shift
@@ -35,17 +36,27 @@ module Charts
             # `dateFormat s.SSS`
             # We would want "s.SSS"
             date_format = line.split(' ')[1..-1].join(' ')
+          when /\AnumberFormat/
+            # Line will be like:
+            # `numberFormat s.SSS`
+            # We would want "s.SSS"
+            number_format = line.split(' ')[1..-1].join(' ')
           else
-            data << parse_line(line)
+            data << parse_line(line, date: !date_format.nil?)
           end
         end
 
-        [title, date_format, data]
+        [title, date_format, number_format, data]
       end
 
-      def self.parse_line(line)
+      def self.parse_line(line, date: false)
         match_data = line.match(GANTT_LINE_REGEX)
-        { title: CGI.escapeHTML(match_data[:title]).strip, start: match_data[:start].to_f, end: match_data[:end].to_f }
+        start_val, end_val = if date
+          [DateTime.parse(match_data[:start]).to_time.to_f, DateTime.parse(match_data[:end]).to_time.to_f]
+        else
+          [match_data[:start].to_f, match_data[:end].to_f]
+        end
+        { title: CGI.escapeHTML(match_data[:title]).strip, start: start_val, end: end_val }
       end
     end
   end
