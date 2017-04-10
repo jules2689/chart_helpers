@@ -27,7 +27,6 @@ class GanttParserTest < Minitest::Test
 
   def test_parsing_gantt_chart_when_rows_start_with_title
     chart = <<-eos
-      gantt
       title testing
 
       title1 :a1, 0.000, 0.001
@@ -37,7 +36,7 @@ class GanttParserTest < Minitest::Test
     title, date_format, number_format, data = Charts::Parsers::Gantt.parse(chart.split("\n"))
 
     expected_data = [{title: "title1", start: 0.0, end: 0.001}, {title: "title2", start: 0.001, end: 0.005}]
-    assert_equal expected_data, symbolize_names: true), data
+    assert_equal expected_data, data
     assert_equal 'testing', title
     assert_nil date_format
     assert_nil number_format
@@ -45,7 +44,6 @@ class GanttParserTest < Minitest::Test
 
   def test_parsing_with_number_format
     chart = <<-eos
-      gantt
       title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
       numberFormat  %.0f%
 
@@ -60,7 +58,6 @@ class GanttParserTest < Minitest::Test
 
   def test_parsing_with_date_format
     chart = <<-eos
-      gantt
       title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
       dateFormat  %H:%M:%S
 
