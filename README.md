@@ -23,6 +23,8 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+require 'charts'
+
 chart = <<EOF
 gantt
 title My Title

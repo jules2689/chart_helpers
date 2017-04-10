@@ -36,5 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'byebug'
 
   spec.add_dependency 'victor', '0.2.1'
+  spec.add_dependency 'ruby-graphviz'
   spec.add_dependency 'ttfunk'
 end

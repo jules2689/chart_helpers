@@ -7,7 +7,7 @@ class ChartsTest < Minitest::Test
     refute_nil ::Charts::VERSION
   end
 
-  def test_parsing_gantt_chart
+  def test_gantt_gantt_chart
     chart = <<-eos
       gantt
          title file: /gems/bundler-1.14.6/lib/bundler/definition.rb method: converge_dependencies
@@ -36,7 +36,7 @@ class ChartsTest < Minitest::Test
     end
   end
 
-  def test_parsing_gantt_chart_when_rows_start_with_title
+  def test_gantt_gantt_chart_when_rows_start_with_title
     chart = <<-eos
       gantt
       title testing
@@ -55,7 +55,7 @@ class ChartsTest < Minitest::Test
     end
   end
 
-  def test_parsing_with_number_format
+  def test_gantt_with_number_format
     chart = <<-eos
       gantt
       title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
@@ -75,7 +75,7 @@ class ChartsTest < Minitest::Test
     end
   end
 
-  def test_parsing_with_date_format
+  def test_gantt_with_date_format
     chart = <<-eos
       gantt
       title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
@@ -92,6 +92,43 @@ class ChartsTest < Minitest::Test
 
       assert_equal Charts::GanttChart, gantt_chart.class
       assert_equal fixture('gantt_date_format.svg').strip, File.read(file.path + ".svg").strip
+    end
+  end
+
+  def test_graph
+    chart = <<-eos
+      graph TD
+      A-->B
+      B---C
+      C--text-->D
+      D--text---E
+      E-.text.->F
+      F-.->G
+      G==>H
+      H==text===>I
+    eos
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal GraphViz, gantt_chart.class
+      assert_equal fixture('graph.svg').strip, File.read(file.path).strip
+    end
+  end
+
+  def test_graph_in_dot_format
+    chart = <<-eos
+      graph graphname {
+        a -- b -- c;
+        b -- d;
+      }
+    eos
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal GraphViz, gantt_chart.class
+      assert_equal fixture('graph_dot.svg').strip, File.read(file.path).strip
     end
   end
 end
