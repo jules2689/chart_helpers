@@ -22,7 +22,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+chart = <<EOF
+gantt
+title My Title
+numberFormat .%2f
+
+row 0, :group1, 0.000, 0.100
+row 1, :group1, 0.100, 0.200
+row 2, :group1, 0.200, 0.300
+EOF
+Charts.render_chart(chart, 'my_chart.svg')
+```
 
 ## Development
 
