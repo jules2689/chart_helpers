@@ -22,6 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
+### Gantt Chart
+
 ```ruby
 require 'charts'
 
@@ -33,6 +35,35 @@ numberFormat .%2f
 row 0, :group1, 0.000, 0.100
 row 1, :group1, 0.100, 0.200
 row 2, :group1, 0.200, 0.300
+EOF
+Charts.render_chart(chart, 'my_chart.svg')
+```
+
+### Flowchart
+
+```ruby
+require 'charts'
+
+chart = <<EOF
+graph
+A-->B
+B--text-->C
+EOF
+Charts.render_chart(chart, 'my_chart.svg')
+```
+
+### DOT Format
+
+Full support for GraphViz's .dot format
+
+```ruby
+require 'charts'
+
+chart = <<EOF
+graph graphname {
+  a -- b -- c;
+  b -- d;
+}
 EOF
 Charts.render_chart(chart, 'my_chart.svg')
 ```
