@@ -52,6 +52,19 @@ EOF
 Charts.render_chart(chart, 'my_chart.svg')
 ```
 
+*Supported arrows:*
+
+| Line Type       |                         |
+|-----------------|-------------------------|
+| `A-->B`         | Solid arrow             |
+| `B---C`         | Solid line              |
+| `C--text-->D`   | Solid arrow with label  |
+| `D--text---E`   | Solid line with label   |
+| `E-.text.->F`   | Dotted arrow with label |
+| `F-.->G`        | Dotted arrow            |
+| `G==>H`         | Bold arrow              |
+| `H==text===>I`  | Bold line with text     |
+
 ### DOT Format
 
 Full support for GraphViz's .dot format
