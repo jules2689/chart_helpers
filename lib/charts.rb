@@ -17,7 +17,7 @@ module Charts
         g.output(svg: output_file)
         g
       when /\Agraph/
-        parse_graphviz(chart_lines, output_file)
+        parse_graphviz(chart_lines, chart_type.split('graph').last.strip, output_file)
       else
         raise 'Unsupported chart type declared'
       end
@@ -43,23 +43,35 @@ module Charts
       gantt
     end
 
-    def parse_graphviz(lines, output_file)
-      parsed_lines, parsed_nodes = Charts::Parsers::Graphviz.parse(lines)
+    def parse_graphviz(lines, direction, output_file)
       nodes = {}
-      g = GraphViz.new(:G, type: :digraph )
+      parsed_lines, parsed_nodes = Charts::Parsers::Graphviz.parse(lines)
+      graph = GraphViz.new(:G, type: :digraph, rankdir: direction )
 
-      parsed_nodes.each do |node|
-        nodes[node] = g.add_nodes(node)
+      parsed_lines.each do |group_name, group|
+        local_g = if group_name == :default_global_data
+          graph
+        else
+          graph.add_graph("cluster_#{group_name}", label: group_name)
+        end
+
+        group.each do |node_connection|
+          opts = { style: node_connection[:style] }
+          opts[:label] = node_connection[:line_text] if node_connection[:line_text]
+
+          # Add nodes if we need to
+          nodes[node_connection[:from_node]] ||= local_g.add_nodes(node_connection[:from_node])
+          nodes[node_connection[:to_node]]   ||= local_g.add_nodes(node_connection[:to_node])
+          local_g.add_edges(
+            nodes[node_connection[:from_node]],
+            nodes[node_connection[:to_node]],
+            opts
+          )
+        end
       end
 
-      parsed_lines[:default_global_data].each do |node_connection|
-        opts = { style: node_connection[:style] }
-        opts[:label] = node_connection[:line_text] if node_connection[:line_text]
-        g.add_edges(nodes[node_connection[:from_node]], nodes[node_connection[:to_node]], opts)
-      end
-
-      g.output(svg: output_file)
-      g
+      graph.output(svg: output_file)
+      graph
     end
   end
 end

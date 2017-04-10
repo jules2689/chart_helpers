@@ -32,6 +32,7 @@ module Charts
           end
         end
 
+        raise 'Never finished subgraph' if in_subgraph
         [graphs, nodes]
       end
 

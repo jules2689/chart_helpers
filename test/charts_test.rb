@@ -116,6 +116,25 @@ class ChartsTest < Minitest::Test
     end
   end
 
+  def test_graph_with_subgraph
+    chart = <<-eos
+      graph TD
+      A-->B
+      subgraph AB
+        B---C
+        C--text-->D
+      end
+    eos
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal GraphViz, gantt_chart.class
+      File.write('/Users/juliannadeau/src/github.com/jules2689/charts/test/fixtures/graph_subgraph.svg', File.read(file.path))
+      assert_equal fixture('graph_subgraph.svg').strip, File.read(file.path).strip
+    end
+  end
+
   def test_graph_in_dot_format
     chart = <<-eos
       graph graphname {

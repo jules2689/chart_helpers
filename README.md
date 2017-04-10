@@ -47,7 +47,9 @@ require 'charts'
 chart = <<EOF
 graph
 A-->B
-B--text-->C
+subgraph Name
+  B--text-->C
+end
 EOF
 Charts.render_chart(chart, 'my_chart.svg')
 ```
