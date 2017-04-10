@@ -116,6 +116,21 @@ class ChartsTest < Minitest::Test
     end
   end
 
+  def test_graph_with_LR_direction
+    chart = <<-eos
+      graph LR
+      A-->B
+      B-->C
+    eos
+
+    Tempfile.open('chart.svg') do |file|
+      gantt_chart = Charts.render_chart(chart, file.path)
+
+      assert_equal GraphViz, gantt_chart.class
+      assert_equal fixture('graph_lr.svg').strip, File.read(file.path).strip
+    end
+  end
+
   def test_graph_with_subgraph
     chart = <<-eos
       graph TD
