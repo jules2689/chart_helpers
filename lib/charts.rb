@@ -1,6 +1,7 @@
 require 'charts/version'
 require 'charts/gantt_chart'
 require 'charts/parsers/gantt'
+require 'charts/parsers/graphviz'
 require 'graphviz'
 
 module Charts
