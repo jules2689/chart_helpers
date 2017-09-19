@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite time='0.000207' skipped='0' failures='0' errors='0' name="GraphvizTest" assertions='15' tests='2'>
-  <testcase time='0.000109' file="test/parsers/graphviz_parser_test.rb" name="test_parsing_with_subgraphs" assertions='5'>
-  </testcase>
-  <testcase time='0.000098' file="test/parsers/graphviz_parser_test.rb" name="test_parsing_with_all_arrows" assertions='10'>
-  </testcase>
-</testsuite>
