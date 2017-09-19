@@ -2,7 +2,7 @@ require 'test_helper'
 require 'json'
 require 'byebug'
 
-class ChartsTest < Minitest::Test
+class ChartHelpersTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::Charts::VERSION
   end

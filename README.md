@@ -1,4 +1,4 @@
-# Charts
+# Chart Helpers
 
 Charts is a gem that can parse markdown-like text and turn it into SVG files.
 
@@ -9,7 +9,7 @@ Charts is a gem that can parse markdown-like text and turn it into SVG files.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'charts'
+gem 'chart_helpers'
 ```
 
 And then execute:

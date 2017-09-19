@@ -1,7 +1,7 @@
 require 'victor'
 require 'date'
 
-module Charts
+module ChartHelpers
   class GanttChart
     DEFAULT = {
       font_size:         12,

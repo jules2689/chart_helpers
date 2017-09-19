@@ -1,6 +1,6 @@
 require 'cgi'
 
-module Charts
+module ChartHelpers
   module Parsers
     class Gantt
       # This should match "title" :a1, 0.000, 0.001

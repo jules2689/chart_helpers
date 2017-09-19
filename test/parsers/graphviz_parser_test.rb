@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'charts/parsers/graphviz'
+require 'chart_helpers/parsers/graphviz'
 require 'byebug'
 
 class GraphvizTest < Minitest::Test

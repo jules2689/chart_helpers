@@ -1,10 +1,10 @@
-require 'charts/version'
-require 'charts/gantt_chart'
-require 'charts/parsers/gantt'
-require 'charts/parsers/graphviz'
+require 'chart_helpers/version'
+require 'chart_helpers/gantt_chart'
+require 'chart_helpers/parsers/gantt'
+require 'chart_helpers/parsers/graphviz'
 require 'graphviz'
 
-module Charts
+module ChartHelpers
   class << self
     def render_chart(chart, output_file)
       chart_lines = chart.split("\n")

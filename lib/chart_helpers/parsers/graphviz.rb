@@ -1,6 +1,6 @@
 require 'cgi'
 
-module Charts
+module ChartHelpers
   module Parsers
     class Graphviz
       def self.parse(lines)
