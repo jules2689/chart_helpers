@@ -17,7 +17,7 @@ class GanttParserTest < Minitest::Test
        "Set.new(@dependencies.map(&dependency_without_type)) != Set.new(@locked_deps.values.map(&dependency_without_type))" :a1, 0.026, 0.027
     eos
 
-    title, date_format, number_format, data = Charts::Parsers::Gantt.parse(chart.split("\n"))
+    title, date_format, number_format, data = ChartHelpers::Parsers::Gantt.parse(chart.split("\n"))
 
     assert_equal JSON.parse(fixture('gantt.json'), symbolize_names: true), data
     assert_equal 'file: /gems/bundler-1.14.6/lib/bundler/definition.rb method: converge_dependencies', title
@@ -33,7 +33,7 @@ class GanttParserTest < Minitest::Test
       title2 :a1, 0.001, 0.005
     eos
 
-    title, date_format, number_format, data = Charts::Parsers::Gantt.parse(chart.split("\n"))
+    title, date_format, number_format, data = ChartHelpers::Parsers::Gantt.parse(chart.split("\n"))
 
     expected_data = [{title: "title1", start: 0.0, end: 0.001}, {title: "title2", start: 0.001, end: 0.005}]
     assert_equal expected_data, data
@@ -51,7 +51,7 @@ class GanttParserTest < Minitest::Test
       "@dependencies    = dependencies" :a1, 50.0, 100.0
     eos
 
-    title, date_format, number_format, data = Charts::Parsers::Gantt.parse(chart.split("\n"))
+    title, date_format, number_format, data = ChartHelpers::Parsers::Gantt.parse(chart.split("\n"))
     assert_nil date_format
     assert_equal '%.0f%', number_format
   end
@@ -65,7 +65,7 @@ class GanttParserTest < Minitest::Test
       "@dependencies    = dependencies" :a1, 2007-11-19T08:38, 2007-11-19T08:40Z
     eos
 
-    _title, date_format, number_format, _data = Charts::Parsers::Gantt.parse(chart.split("\n"))
+    _title, date_format, number_format, _data = ChartHelpers::Parsers::Gantt.parse(chart.split("\n"))
     assert_equal '%H:%M:%S', date_format
     assert_nil number_format
   end

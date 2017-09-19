@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in charts.gemspec
+# Specify your gem's dependencies in ChartHelpers.gemspec
 gemspec
 
 group :test do

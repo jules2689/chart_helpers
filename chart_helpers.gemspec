@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.email         = ['julian@jnadeau.ca']
 
   spec.summary       = 'Create SVG and PNG Charts'
-  spec.description   = 'Create SVG and PNG Charts. Includes Gantt Charts'
-  spec.homepage      = "https://github.com/jules2689/charts"
+  spec.description   = 'Create SVG and PNG ChartHelpers. Includes Gantt Charts'
+  spec.homepage      = "https://github.com/jules2689/chart_helpers"
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

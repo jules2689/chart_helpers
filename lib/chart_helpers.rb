@@ -27,13 +27,13 @@ module ChartHelpers
     private
 
     def parse_gantt(lines, output_file)
-      title, date_format, number_format, data = Charts::Parsers::Gantt.parse(lines)
+      title, date_format, number_format, data = ChartHelpers::Parsers::Gantt.parse(lines)
 
       min = data.collect { |d| d[:start] }.min
       max = data.collect { |d| d[:end] }.max
       scale = (max - min) / 20
 
-      gantt = Charts::GanttChart.new(
+      gantt = ChartHelpers::GanttChart.new(
         title: title,
         data: data,
         scale: scale,
@@ -46,7 +46,7 @@ module ChartHelpers
 
     def parse_graphviz(lines, direction, output_file)
       nodes = {}
-      parsed_lines, parsed_nodes = Charts::Parsers::Graphviz.parse(lines)
+      parsed_lines, parsed_nodes = ChartHelpers::Parsers::Graphviz.parse(lines)
       graph = GraphViz.new(:G, type: :digraph, rankdir: direction )
 
       parsed_lines.each do |group_name, group|

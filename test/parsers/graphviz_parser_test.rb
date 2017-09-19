@@ -15,7 +15,7 @@ class GraphvizTest < Minitest::Test
       H==text===>I
     eos
 
-    parsed_lines, node_set = Charts::Parsers::Graphviz.parse(chart.split("\n"))
+    parsed_lines, node_set = ChartHelpers::Parsers::Graphviz.parse(chart.split("\n"))
     assert_equal Set.new('A'..'I'), node_set
 
     expected_nodes = [
@@ -42,7 +42,7 @@ class GraphvizTest < Minitest::Test
       end
     eos
 
-    parsed_lines, node_set = Charts::Parsers::Graphviz.parse(chart.split("\n"))
+    parsed_lines, node_set = ChartHelpers::Parsers::Graphviz.parse(chart.split("\n"))
     assert_equal Set.new('A'..'C'), node_set
 
     assert_equal 1, parsed_lines[:default_global_data].size

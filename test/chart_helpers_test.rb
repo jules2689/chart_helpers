@@ -4,7 +4,7 @@ require 'byebug'
 
 class ChartHelpersTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::Charts::VERSION
+    refute_nil ::ChartHelpers::VERSION
   end
 
   def test_gantt_gantt_chart
@@ -22,13 +22,13 @@ class ChartHelpersTest < Minitest::Test
          "Set.new(@dependencies.map(&dependency_without_type)) != Set.new(@locked_deps.values.map(&dependency_without_type))" :a1, 0.026, 0.027
     eos
 
-    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+    ChartHelpers::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
 
     expected_data = JSON.parse(fixture('gantt.json'), symbolize_names: true)
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
-      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal ChartHelpers::GanttChart, gantt_chart.class
       assert_equal expected_data, gantt_chart.data
       assert_equal 'file: /gems/bundler-1.14.6/lib/bundler/definition.rb method: converge_dependencies', gantt_chart.title
       assert_equal 0.00135, gantt_chart.scale
@@ -45,12 +45,12 @@ class ChartHelpersTest < Minitest::Test
       title2 :a1, 0.001, 0.005
     eos
 
-    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+    ChartHelpers::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
-      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal ChartHelpers::GanttChart, gantt_chart.class
       assert_equal [{title: "title1", start: 0.0, end: 0.001}, {title: "title2", start: 0.001, end: 0.005}], gantt_chart.data
     end
   end
@@ -65,12 +65,12 @@ class ChartHelpersTest < Minitest::Test
       "@dependencies    = dependencies" :a1, 50.0, 100.0
     eos
 
-    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+    ChartHelpers::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
-      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal ChartHelpers::GanttChart, gantt_chart.class
       assert_equal fixture('gantt_number_format.svg').strip, File.read(file.path + ".svg").strip
     end
   end
@@ -85,12 +85,12 @@ class ChartHelpersTest < Minitest::Test
       "@dependencies    = dependencies" :a1, 2007-11-19T08:38, 2007-11-19T08:40Z
     eos
 
-    Charts::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
+    ChartHelpers::GanttChart.any_instance.stubs(:estimate_size).returns("width: 37.0; height: 14.0;")
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
-      assert_equal Charts::GanttChart, gantt_chart.class
+      assert_equal ChartHelpers::GanttChart, gantt_chart.class
       assert_equal fixture('gantt_date_format.svg').strip, File.read(file.path + ".svg").strip
     end
   end
@@ -109,7 +109,7 @@ class ChartHelpersTest < Minitest::Test
     eos
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
       assert_equal GraphViz, gantt_chart.class
       assert_equal fixture('graph.svg').strip, File.read(file.path).strip
@@ -124,7 +124,7 @@ class ChartHelpersTest < Minitest::Test
     eos
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
       assert_equal GraphViz, gantt_chart.class
       assert_equal fixture('graph_lr.svg').strip, File.read(file.path).strip
@@ -142,7 +142,7 @@ class ChartHelpersTest < Minitest::Test
     eos
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
       assert_equal GraphViz, gantt_chart.class
       File.write('/Users/juliannadeau/src/github.com/jules2689/charts/test/fixtures/graph_subgraph.svg', File.read(file.path))
@@ -159,7 +159,7 @@ class ChartHelpersTest < Minitest::Test
     eos
 
     Tempfile.open('chart.svg') do |file|
-      gantt_chart = Charts.render_chart(chart, file.path)
+      gantt_chart = ChartHelpers.render_chart(chart, file.path)
 
       assert_equal GraphViz, gantt_chart.class
       assert_equal fixture('graph_dot.svg').strip, File.read(file.path).strip

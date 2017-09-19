@@ -1,6 +1,6 @@
 # Chart Helpers
 
-Charts is a gem that can parse markdown-like text and turn it into SVG files.
+Chart Helpers is a gem that can parse markdown-like text and turn it into SVG files.
 
 ![Gantt Chart](https://cloud.githubusercontent.com/assets/3074765/24520143/6a5e0b06-1555-11e7-9ecc-041e7f34a3ef.png)
 
@@ -18,14 +18,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install charts
+    $ gem install charts_helpers
 
 ## Usage
 
 ### Gantt Chart
 
 ```ruby
-require 'charts'
+require 'charts_helpers'
 
 chart = <<EOF
 gantt
@@ -36,13 +36,13 @@ row 0, :group1, 0.000, 0.100
 row 1, :group1, 0.100, 0.200
 row 2, :group1, 0.200, 0.300
 EOF
-Charts.render_chart(chart, 'my_chart.svg')
+ChartHelpers.render_chart(chart, 'my_chart.svg')
 ```
 
 ### Flowchart
 
 ```ruby
-require 'charts'
+require 'charts_helpers'
 
 chart = <<EOF
 graph
@@ -51,7 +51,7 @@ subgraph Name
   B--text-->C
 end
 EOF
-Charts.render_chart(chart, 'my_chart.svg')
+ChartHelpers.render_chart(chart, 'my_chart.svg')
 ```
 
 *Supported arrows:*
@@ -72,7 +72,7 @@ Charts.render_chart(chart, 'my_chart.svg')
 Full support for GraphViz's .dot format
 
 ```ruby
-require 'charts'
+require 'charts_helpers'
 
 chart = <<EOF
 graph graphname {
@@ -80,7 +80,7 @@ graph graphname {
   b -- d;
 }
 EOF
-Charts.render_chart(chart, 'my_chart.svg')
+ChartHelpers.render_chart(chart, 'my_chart.svg')
 ```
 
 ## Development
@@ -93,5 +93,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/charts. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ChartHelpers. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
