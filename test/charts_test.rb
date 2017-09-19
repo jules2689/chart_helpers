@@ -79,9 +79,9 @@ class ChartsTest < Minitest::Test
     chart = <<-eos
       gantt
       title file: /src/github.com/jules2689/bundler/lib/bundler/definition.rb method: initialize
-      dateFormat  %H:%M:%S
+      dateFormat  %M:%S
 
-      "@unlocking = unlock == true || !unlock.empty?" :a1, 2007-11-19T08:37, 2007-11-19T08:38Z
+      "@unlocking = unlock == true || !unlock.empty?" :a1, 2007-11-19T08:37Z, 2007-11-19T08:38Z
       "@dependencies    = dependencies" :a1, 2007-11-19T08:38, 2007-11-19T08:40Z
     eos
 

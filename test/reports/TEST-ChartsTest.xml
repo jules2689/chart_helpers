@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time='0.152543' skipped='0' failures='0' errors='0' name="ChartsTest" assertions='20' tests='9'>
+  <testcase time='0.000021' file="test/charts_test.rb" name="test_that_it_has_a_version_number" assertions='1'>
+  </testcase>
+  <testcase time='0.038768' file="test/charts_test.rb" name="test_graph" assertions='2'>
+  </testcase>
+  <testcase time='0.005930' file="test/charts_test.rb" name="test_gantt_gantt_chart" assertions='5'>
+  </testcase>
+  <testcase time='0.031825' file="test/charts_test.rb" name="test_graph_with_LR_direction" assertions='2'>
+  </testcase>
+  <testcase time='0.035488' file="test/charts_test.rb" name="test_graph_in_dot_format" assertions='2'>
+  </testcase>
+  <testcase time='0.003099' file="test/charts_test.rb" name="test_gantt_with_date_format" assertions='2'>
+  </testcase>
+  <testcase time='0.002561' file="test/charts_test.rb" name="test_gantt_with_number_format" assertions='2'>
+  </testcase>
+  <testcase time='0.002078' file="test/charts_test.rb" name="test_gantt_gantt_chart_when_rows_start_with_title" assertions='2'>
+  </testcase>
+  <testcase time='0.032773' file="test/charts_test.rb" name="test_graph_with_subgraph" assertions='2'>
+  </testcase>
+</testsuite>
