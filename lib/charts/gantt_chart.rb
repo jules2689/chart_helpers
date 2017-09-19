@@ -1,4 +1,5 @@
 require 'victor'
+require 'date'
 
 module Charts
   class GanttChart
